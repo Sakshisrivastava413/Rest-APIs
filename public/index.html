@@ -26,21 +26,45 @@
   <script type="text/babel">
   
   var Ninjas = React.createClass({
+
+    getInitialState: function () {
+      return({
+        ninjas: [];
+    });
+    }
     render: function () {
       return(
         <div id="ninj-container">
-          <form id="search">
+          <form id="search" onSubmit={handleSubmit}>
             <label>Enter your latitude:</label>
             <input type="text" ref="lat" placeholder="latitude" required />
             <label>Enter your longitude:</label>
             <input type="text" ref="lng" placeholder="longitude" required />
             <input type="submit" value="Find Ninjas" />
             </form>
+            <ul></ul>
           </div>
-
       )
-      
+    },
+    handleSubmit: function (e) {
+      e.preventDefault();
+      var LNG = this.refs.lng.value;
+      var LAT = this.refs.lat.value;
+
+      fetch('/api/ninja/lng=' + LNG + '&lat=' + LAT).then(
+        function(data){
+          return data.json();
+        }).then(json => {
+          tjhis.setState({
+            ninjas: json
+          });
+        }            
+            
+          
+        )
+
     }
+
   })
   </script>
 
