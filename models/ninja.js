@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
-const Schema = require('Schema');
+const Schema = mongoose.Schema;
 
 // create ninja schema and models
-const ninjaSchema = new Schema({
+const NinjaSchema = new Schema({
   name: {
     type: String,
     required: [true, "Name field is required"]
