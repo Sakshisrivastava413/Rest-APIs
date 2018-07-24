@@ -22,6 +22,29 @@
   <script src="https://unpkg.com/react@15/dist/react.js"></script>
   <script src="https://unpkg.com/react-dom@15/dist/react-dom.min.js"></script>
 
+  <!-- creating react components -->
+  <script type="text/babel">
+  
+  var Ninjas = React.createClass({
+    render: function () {
+      return(
+        <div id="ninj-container">
+          <form id="search">
+            <label>Enter your latitude:</label>
+            <input type="text" ref="lat" placeholder="latitude" required />
+            <label>Enter your longitude:</label>
+            <input type="text" ref="lng" placeholder="longitude" required />
+            <input type="submit" value="Find Ninjas" />
+            </form>
+          </div>
+
+      )
+      
+    }
+  })
+  </script>
+
+
 </body>
 
 </html>
