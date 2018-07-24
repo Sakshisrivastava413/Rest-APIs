@@ -8,8 +8,10 @@ var app = express();
 
 // connect to mLab
 mongoose.connect('mongodb://ninja-one:test123@ds147451.mlab.com:47451/exploring-mlab');
-
 mongoose.Promise = global.Promise;
+
+//set up static files
+app.use(express.static('public'));
 
 app.use(bodyParser.json());
 
