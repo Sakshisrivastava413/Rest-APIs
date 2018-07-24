@@ -6,7 +6,15 @@ const router = express.Router();
 
 // to get list of ninjas from the db
 router.get('/ninjas', function (req, res, next) {
-  res.send({ type: "GET" });
+  Ninja.geoNear({
+    type: 'point',
+    coordinates: [req.query.lng, req.query.lat]
+  },
+    {
+      maxDistance: 100000, spherical: true
+    }.then(function (ninjas) {
+      res.send(ninjas);
+    }));
 });
 
 
@@ -28,7 +36,7 @@ router.put('/ninjas/:id', function (req, res, next) {
     }).then(function (ninja) {
       res.send(ninja);
     });
-  });
+});
 
 
 // to delete a particular ninjas from the db
