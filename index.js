@@ -16,6 +16,12 @@ app.use(bodyParser.json());
 // initialize routes
 app.use('/api', routes);
 
+// error handling middlewares
+app.use(function(err, req, res, next) {
+  // console.log(err);
+  res.status(422).send({error: err.message});
+})
+
 // listen for requests
 app.listen(process.env.port || 4000, function() {
   console.log("listening for the requests");
